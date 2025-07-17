@@ -15,5 +15,6 @@ import { IUserRepositoryToken } from './user-repository.interface';
     PrismaService,
   ],
   controllers: [UserController],
+  exports: [UserService],
 })
 export class UserModule {}

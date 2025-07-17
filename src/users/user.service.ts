@@ -1,4 +1,4 @@
-import { IUserRepository } from './../../dist/user-repository.interface.d';
+import { IUserRepository } from './user-repository.interface';
 import { Inject, Injectable } from '@nestjs/common';
 import { IUserService } from './user-service.interface';
 
@@ -20,7 +20,15 @@ export class UserService implements IUserService {
     return this.userRepository.findById(id);
   }
 
+  findByEmail(email: string): Promise<User | null> {
+    return this.userRepository.findByEmail(email);
+  }
+
   createUser(user: Omit<User, 'id'>): Promise<User> {
+    return this.userRepository.create(user);
+  }
+
+  create(user: Omit<User, 'id'>): Promise<User> {
     return this.userRepository.create(user);
   }
 
